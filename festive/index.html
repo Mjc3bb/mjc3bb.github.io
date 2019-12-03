@@ -273,12 +273,15 @@ init();
     $( "#word" ).each(function( index ) {
       var originalText = $( this ).text();
       var newText = "";
+      var offset = 0;
       for( var i = 0; i < originalText.length; i++)
       {
-          if (i % 2 === 0)
-            newText += "<span " +"class=\"a"+ i%2 + "\"" +">" + originalText.charAt(i) + "</span>";
-          else
-            newText += "<span " +"class=\"a"+ i%2 + "\"" +">" + originalText.charAt(i) + "</span>";
+        if (originalText.charAt(i) === ' ')
+          offset++;
+        if (i % 2 === 0)
+          newText += "<span " + "class=\"a" + ((i + offset) % 2) + "\"" + ">" + originalText.charAt(i) + "</span>";
+        else
+          newText += "<span " + "class=\"a" + ((i + offset) % 2) + "\"" + ">" + originalText.charAt(i) + "</span>";
       }
       $( this ).html(newText);
     });
