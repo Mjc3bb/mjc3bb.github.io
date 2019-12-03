@@ -8,106 +8,105 @@
 <link href="https://fonts.googleapis.com/css?family=Creepster&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 <script type="text/javascript">
-  (function() {
-  var app;
-
-  app = angular.module('app', []);
-
-  app.directive('countdown', [
-    'Util', '$interval', function(Util, $interval) {
-      return {
-        restrict: 'A',
-        scope: {
-          date: '@'
-        },
-        link: function(scope, element) {
-          var future;
-          future = new Date(scope.date);
-          $interval(function() {
-            var diff;
-            diff = Math.floor((future.getTime() - new Date().getTime()) / 1000);
-            return element.text(Util.dhms(diff));
-          }, 1000);
-        }
-      };
-    }
-  ]);
-
-  app.service('Util', [
-    function() {
-      return {
-        dhms: function(t) {
-          var days, hours, minutes, seconds;
-          days = Math.floor(t / 86400);
-          t -= days * 86400;
-          hours = Math.floor(t / 3600) % 24;
-          t -= hours * 3600;
-          minutes = Math.floor(t / 60) % 60;
-          t -= minutes * 60;
-          seconds = t % 60;
-          return [days + 'd', hours + 'h', minutes + 'm', seconds + 's'].join(' ');
-        }
-      };
-    }
-  ]);
-
-}).call(this);
-
+  (function () {
+    var app;
+    app = angular.module('app', []);
+    app.directive('countdown', [
+      'Util', '$interval', function (Util, $interval) {
+        return {
+          restrict: 'A',
+          scope: {
+            date: '@'
+          },
+          link: function (scope, element) {
+            var future;
+            future = new Date(scope.date);
+            $interval(function () {
+              var diff;
+              diff = Math.floor((future.getTime() - new Date().getTime()) / 1000);
+              return element.text(Util.dhms(diff));
+            }, 1000);
+          }
+        };
+      }
+    ]);
+    app.service('Util', [
+      function () {
+        return {
+          dhms: function (t) {
+            var days, hours, minutes, seconds;
+            days = Math.floor(t / 86400);
+            t -= days * 86400;
+            hours = Math.floor(t / 3600) % 24;
+            t -= hours * 3600;
+            minutes = Math.floor(t / 60) % 60;
+            t -= minutes * 60;
+            seconds = t % 60;
+            return [days + 'd', hours + 'h', minutes + 'm', seconds + 's'].join(' ');
+          }
+        };
+      }
+    ]);
+  }).call(this);
 </script>
 <style>
-@import url(https://fonts.googleapis.com/css?family=Comfortaa);
-body,h1 {font-family: "Raleway", sans-serif}
-body, html {height: 100%}
-.bgimg {
-  background-color: black;
-  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a4bf214f-21b4-4395-82df-1416aa72f44e/dc59gfo-6b932c15-b36a-420c-b6b2-053ed4cf8fb5.png/v1/fill/w_1024,h_576,q_80,strp/alchemy_wallpaper_by_theaquaticbovine_dc59gfo-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvYTRiZjIxNGYtMjFiNC00Mzk1LTgyZGYtMTQxNmFhNzJmNDRlXC9kYzU5Z2ZvLTZiOTMyYzE1LWIzNmEtNDIwYy1iNmIyLTA1M2VkNGNmOGZiNS5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.8NGheG9WwjZWyR_Ku5dv8qMlUtNGh0RiNSBzsAdifnA');
-  /*background-image: url('./carson.png');*/
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
-}
+    @import url(https://fonts.googleapis.com/css?family=Comfortaa);
 
-body {
-  margin: 0;
-}
+    body, h1 {
+        font-family: "Raleway", sans-serif
+    }
 
-.wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-}
+    body, html {
+        height: 100%
+    }
 
-.time-to {
-  text-align: center;
-  color: white;
-  font-size: 40px;
-  font-family: 'Creepster', cursive;
-  letter-spacing: 2px;
-}
-.time-to span {
-  display: block;
-  font-size: 50px;
-}
+    .bgimg {
+        background-color: black;
+        background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a4bf214f-21b4-4395-82df-1416aa72f44e/dc59gfo-6b932c15-b36a-420c-b6b2-053ed4cf8fb5.png/v1/fill/w_1024,h_576,q_80,strp/alchemy_wallpaper_by_theaquaticbovine_dc59gfo-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvYTRiZjIxNGYtMjFiNC00Mzk1LTgyZGYtMTQxNmFhNzJmNDRlXC9kYzU5Z2ZvLTZiOTMyYzE1LWIzNmEtNDIwYy1iNmIyLTA1M2VkNGNmOGZiNS5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.8NGheG9WwjZWyR_Ku5dv8qMlUtNGh0RiNSBzsAdifnA');
+        /*background-image: url('./carson.png');*/
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
 
+    body {
+        margin: 0;
+    }
+
+    .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+    }
+
+    .time-to {
+        text-align: center;
+        color: white;
+        font-size: 40px;
+        font-family: 'Creepster', cursive;
+        letter-spacing: 2px;
+    }
+
+    .time-to span {
+        display: block;
+        font-size: 50px;
+    }
 </style>
 <body>
-
 <div class="bgimg w3-display-container w3-text-white">
-  <div class="w3-display-middle">
-    <h1 style="font-family: 'Creepster', cursive; text-align:center">Carson might be initiated in</h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%">
-    <p class="w3-large w3-center">
-      <div class='wrap' ng-app='app'>
-        <div class='time-to'>
-          <span countdown='' date='December 16, 2019 09:00:00'></span>
+    <div class="w3-display-middle">
+        <h1 style="font-family: 'Creepster', cursive; text-align:center">Carson might be initiated in</h1>
+        <hr class="w3-border-grey" style="margin:auto;width:40%">
+        <p class="w3-large w3-center">
+        <div class='wrap' ng-app='app'>
+            <div class='time-to'>
+                <span countdown='' date='December 16, 2019 09:00:00'></span>
+            </div>
         </div>
+        </p>
     </div>
-    </p>
-  </div>
 </div>
-
-
 </body>
 </html>
 
